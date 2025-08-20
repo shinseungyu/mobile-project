@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="./z_eilab/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./z_eilab/favicon.ico">
+
+    <!-- Library -->
+    <link rel="stylesheet" href="z_eilab/library/jquery-ui.css">
+    <script src="z_eilab/library/jquery-3.6.0.min.js"></script>
+    <script src="z_eilab/library/jquery-ui-1.12.1.min.js"></script>
+
+    <!-- Resources -->
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="z_eilab/index/index.js"></script>
+
+    <link rel="stylesheet" href="z_eilab/deviceviewer/deviceviewer.css">
+    <script src="z_eilab/deviceviewer/deviceviewer.js"></script>
+
+
+    <title></title>
+
+    <style>
+        .logo_wrap {
+            z-index: 1;
+            position: fixed;
+            bottom: 65px;
+            right: 40px;
+            cursor: pointer;
+        }
+
+        .logo_wrap>img {
+            width: 80px
+        }
+
+        .logo_project {
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .logo_project .logo {
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            padding: 0 0 0 3px;
+        }
+
+        .logo_project .big_title {
+            position: fixed;
+            top: 90px;
+            left: 40px;
+            color: #000000;
+            font-size: 28px;
+            line-height: 40px;
+        }
+
+        .logo_project .big_title span {
+            font-size: 20px;
+            line-height: 40px;
+        }
+
+        .logo_project .big_title b {
+            margin-left: -2px;
+            font-weight: bold;
+        }
+
+        .logo_project .mid_title {
+            color: #000000;
+            font-size: 28px;
+        }
+
+        .proto_wrap {
+            position: fixed;
+            bottom: 30px;
+            right: 40px;
+            text-align: right;
+            display: none
+        }
+
+        .device {
+            z-index: 100;
+            position: fixed;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -45%);
+            width: 380px;
+            height: 850px;
+            background: #000;
+            border-radius: 40px;
+        }
+
+        .frame {
+            z-index: 1000;
+            position: fixed;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -45%);
+            width: 360px;
+            height: 830px;
+            background: #fff;
+            border-radius: 30px;
+            box-sizing: border-box;
+            overflow: hidden
+        }
+
+        .frame iframe {
+            position: absolute;
+            top: 30px;
+            width: 100%;
+            height: 800px;
+            border: none;
+            background: none;
+            border-radius: 0 0 30px 30px;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .logo_project .big_title {
+                display: none;
+            }
+        }
+        h1{
+            font-size: 16px;
+        }
+        .header{
+            display: flex;
+            justify-content: space-between;
+            align-self: center;
+            width: 100%;
+            padding-top: 60px;
+        }
+        a{
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="logo_project">
+        <div class="logo">
+            <img src="z_eilab/prototype/logo_black.png" alt="" title="" style="width: 150px;">
+        </div>
+        <div class="big_title">
+            <!-- BNK
+			<br> -->
+            <span style="font-weight: 100;">블록체인 기반</span>
+            <br>
+            <b>
+                통합 시민플랫폼 구축
+            </b>
+        </div>
+        <!-- <div class="mid_title">GUI Proposal</div> -->
+    </div>
+
+    <div class="logo_wrap">
+        <img class="logo_navy" src="z_eilab/prototype/logo_eilab_navy.png" alt="" title="">
+    </div>
+
+
+
+    <div class="device device-frame">
+        <div class="frame">
+            <div class="indicator">
+                <div class="ly-left">
+                    <img src="./img/indicator/ios_indicator_time.svg" alt="">
+                </div>
+                <div class="ly-right">
+                    <img src="./img/indicator/ios_indicator_connection.svg"
+                        alt="">
+                    <img src="./img/indicator/ios_indicator_wifi.svg " alt="">
+                    <img src="./img/indicator/ios_indicator_battery.svg" alt="">
+                </div>
+            </div>
+            <div class="mobile">
+                <div class="header">
+                    <h1>안녕dd</h1>
+                    <div>
+                        <a href="">니하오</a>
+                        <a href="">니하오</a>
+                        <a href="">니하오</a>
+                    </div>
+                </div>
+                
+            </div>
+
+
+            
+        </div>
+    </div>
+
+
+</body>
+
+
+</html>
