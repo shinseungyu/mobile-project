@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="format-detection" content="telephone=no">
+    <title></title>
     <link rel="shortcut icon" href="./z_eilab/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./z_eilab/favicon.ico">
 
@@ -16,126 +15,12 @@
 
     <!-- Resources -->
     <link rel="stylesheet" href="./css/style.css">
-    <script src="z_eilab/index/index.js"></script>
 
     <link rel="stylesheet" href="z_eilab/deviceviewer/deviceviewer.css">
     <script src="z_eilab/deviceviewer/deviceviewer.js"></script>
 
 
-    <title></title>
 
-    <style>
-        .logo_wrap {
-            z-index: 1;
-            position: fixed;
-            bottom: 65px;
-            right: 40px;
-            cursor: pointer;
-        }
-
-        .logo_wrap>img {
-            width: 80px
-        }
-
-        .logo_project {
-            z-index: 1;
-            cursor: pointer;
-        }
-
-        .logo_project .logo {
-            position: fixed;
-            top: 40px;
-            left: 40px;
-            padding: 0 0 0 3px;
-        }
-
-        .logo_project .big_title {
-            position: fixed;
-            top: 90px;
-            left: 40px;
-            color: #000000;
-            font-size: 28px;
-            line-height: 40px;
-        }
-
-        .logo_project .big_title span {
-            font-size: 20px;
-            line-height: 40px;
-        }
-
-        .logo_project .big_title b {
-            margin-left: -2px;
-            font-weight: bold;
-        }
-
-        .logo_project .mid_title {
-            color: #000000;
-            font-size: 28px;
-        }
-
-        .proto_wrap {
-            position: fixed;
-            bottom: 30px;
-            right: 40px;
-            text-align: right;
-            display: none
-        }
-
-        .device {
-            z-index: 100;
-            position: fixed;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -45%);
-            width: 380px;
-            height: 850px;
-            background: #000;
-            border-radius: 40px;
-        }
-
-        .frame {
-            z-index: 1000;
-            position: fixed;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -45%);
-            width: 360px;
-            height: 830px;
-            background: #fff;
-            border-radius: 30px;
-            box-sizing: border-box;
-            overflow: hidden
-        }
-
-        .frame iframe {
-            position: absolute;
-            top: 30px;
-            width: 100%;
-            height: 800px;
-            border: none;
-            background: none;
-            border-radius: 0 0 30px 30px;
-        }
-
-        @media screen and (max-width: 1000px) {
-            .logo_project .big_title {
-                display: none;
-            }
-        }
-        h1{
-            font-size: 16px;
-        }
-        .header{
-            display: flex;
-            justify-content: space-between;
-            align-self: center;
-            width: 100%;
-            padding-top: 60px;
-        }
-        a{
-            display: inline-block;
-        }
-    </style>
 </head>
 
 <body>
@@ -170,8 +55,7 @@
                     <img src="./img/indicator/ios_indicator_time.svg" alt="">
                 </div>
                 <div class="ly-right">
-                    <img src="./img/indicator/ios_indicator_connection.svg"
-                        alt="">
+                    <img src="./img/indicator/ios_indicator_connection.svg" alt="">
                     <img src="./img/indicator/ios_indicator_wifi.svg " alt="">
                     <img src="./img/indicator/ios_indicator_battery.svg" alt="">
                 </div>
@@ -185,14 +69,68 @@
                         <a href="">니하오</a>
                     </div>
                 </div>
-                
+
             </div>
 
 
-            
+
         </div>
     </div>
 
+
+
+
+
+    <!-- 팝업 -->
+    <div id="tempPop01" class="sl-modal modal-popup ty-icon"><!-- id: 퍼블확인용임시ID -->
+        <div class="modal-layer">
+            <div class="modal-container">
+                <div class="modal-inner">
+                    <!-- 여기부터 컨텐츠 -->
+
+
+
+                    <div class="icon-wrap">
+                        <i class="se-ico icon-success"></i>
+                    </div>
+                    <div class="popup-title-wrap">
+                        <h5 class="popup-title" data-wai-focus="start">Title</h5><!-- 접근성 focus start -->
+                    </div>
+                    <div class="popup-conts-wrap">
+                        팝업 내용입니다.
+                        <br>
+                        팝업 내용입니다. 팝업 내용입니다.
+                    </div>
+
+
+
+                    <!-- //여기부터 컨텐츠 -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="btn-wrap">
+                    <button type="button" class="se-btn btn-main ty-cancel"
+                        onclick="stModal.popup.close($(this))">취소</button>
+                    <button type="button" class="se-btn btn-main ty-confirm">확인</button>
+                </div>
+            </div>
+            <div class="modal-control">
+                <button type="button" class="se-btn btn-dialog-close" title="팝업닫기"
+                    onclick="stModal.popup.close($(this))"></button><!-- onclick="stModal.popup.close($(this))" : 모달닫기 -->
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+
+
+        stModal.popup.open('#tempPop01');// 열기
+        // stModal.alert.close('#tempAlert01');// 닫기
+
+
+    </script>
 
 </body>
 
