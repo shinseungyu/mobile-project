@@ -209,95 +209,154 @@ a {
 }
 
 
-/* popup */
 /* modal-popup */
 .sl-modal.modal-popup {
-	overflow: auto;
-	align-items: center;
-	justify-content: center;
-	flex-wrap: wrap;
-	z-index: 2000;
-	position: fixed;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  z-index: 2000;
+  position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: gray;
+  padding: 20px;
 }
 .sl-modal.modal-popup .modal-layer {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: start;
-	width: 296px;
-	max-height: 100%;
-	box-sizing: border-box;
-	border-radius: 24px;
-	border: 1px solid var(--color-cg02);
-	background: var(--color-basic02);
-	box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.06);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 296px;
+  max-height: 100%;
+  box-sizing: border-box;
+  border-radius: 24px;
+  border: 1px solid var(--color-cg02);
+  background: var(--color-basic02);
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.06);
 }
 .sl-modal.modal-popup .modal-layer .modal-header {
-	width: 100%;
-	padding: 17px 46px 16px 20px;
-	border-bottom: 1px solid var(--color-cg02);
-	box-sizing: border-box;
+  width: 100%;
+  padding: 17px 46px 16px 20px;
+  border-bottom: 1px solid var(--color-cg02);
+  box-sizing: border-box;
 }
 .sl-modal.modal-popup .modal-layer .modal-title {
-	display: inline-block;
-	color: var(--color-basic01);
-	font-size: 18px;
-	font-weight: 600;
-	line-height: 26px;
+  display: inline-block;
+  color: var(--color-basic01);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
 }
 .sl-modal.modal-popup .modal-layer .modal-container {
-	overflow: auto;
-	overflow: overlay;
-	width: 100%;
+  overflow: auto;
+  overflow: overlay;
+  width: 100%;
 }
 .sl-modal.modal-popup .modal-layer .modal-container .modal-inner {
-	padding: 32px 24px 24px 24px;
+  padding: 32px 24px 24px 24px;
 }
 .sl-modal.modal-popup .modal-layer .modal-footer {
-	width: 100%;
-	margin-top: auto;
+  width: 100%;
+  margin-top: auto;
 }
 .sl-modal.modal-popup .modal-layer .btn-wrap {
-	display: flex;
-	border-top: 1px solid var(--color-cg02);
+  display: flex;
+  border-top: 1px solid var(--color-cg02);
 }
 .sl-modal.modal-popup .modal-layer .btn-wrap .se-btn.btn-main {
-	width: 100%;
-	min-height: 47px;
-	padding: 6px;
-	border-radius: 0;
+  width: 100%;
+  min-height: 47px;
+  padding: 6px;
+  border-radius: 0;
 }
 .sl-modal.modal-popup .modal-layer .btn-wrap .se-btn.btn-main.ty-cancel {
-	background-color: transparent;
-	color: var(--color-cg07);
-	font-size: 15px;
-	font-weight: 500;
-	line-height: 24px;
-	border: none;
+  background-color: transparent;
+  color: var(--color-cg07);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  border: none;
 }
 .sl-modal.modal-popup .modal-layer .btn-wrap .se-btn.btn-main.ty-confirm {
-	background-color: transparent;
-	color: var(--color-secondary);
-	font-size: 15px;
-	font-weight: 600;
-	line-height: 24px;
-	border: none;
+  background-color: transparent;
+  color: var(--color-secondary);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 24px;
+  border: none;
 }
 .sl-modal.modal-popup .modal-layer .btn-wrap .se-btn.btn-main + .se-btn.btn-main {
-	border-left: 1px solid var(--color-cg02);
+  border-left: 1px solid var(--color-cg02);
 }
 .sl-modal.modal-popup .modal-layer .modal-control {
-	display: flex;
-	position: absolute;
-	top: 12px;
-	right: 12px;
+  display: flex;
+  position: absolute;
+  top: 12px;
+  right: 12px;
 }
 .sl-modal.modal-popup .modal-layer .btn-dialog-close {
-	width: 32px;
-	height: 32px;
-	background: url("../../image/uiux/component/btn_dialog_close_round.svg") no-repeat center;
+  width: 32px;
+  height: 32px;
+  background: url("../../image/uiux/component/btn_dialog_close_round.svg") no-repeat center;
 }
+
+/* modal-popup - animation */
+.sl-modal.modal-popup {
+  opacity: 0;
+  transition: opacity 0.3s ease 0s;
+}
+.sl-modal.modal-popup .modal-layer {
+  opacity: 0;
+  margin-top: 50px;
+  transition: opacity 0.3s ease 0s, margin-top 0.3s ease 0s;
+}
+
+.sl-modal.modal-popup.ani {
+  opacity: 1;
+}
+.sl-modal.modal-popup.ani .modal-layer {
+  opacity: 1;
+  margin-top: 0;
+}
+
+/* modal-popup - 아이콘유형 */
+.sl-modal.modal-popup.ty-icon .modal-container .modal-inner {
+  padding: 32px 24px;
+}
+
+/* modal-popup - 공통text */
+.sl-modal.modal-popup .icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.sl-modal.modal-popup .popup-title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.sl-modal.modal-popup .popup-title {
+  color: var(--color-basic01);
+  font-family: var(--font-point);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+}
+.sl-modal.modal-popup .popup-conts-wrap {
+  color: var(--color-cg07);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22px;
+}
+.sl-modal.modal-popup .popup-conts-wrap b {
+  font-weight: 600;
+}
+
+
+
+
+
