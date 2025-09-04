@@ -510,7 +510,23 @@ $(document).on('change', '[data-func="viewSize"] input', function () {
 
 
 
-
+/* #################################################################################
+	BodyScroll #바디스크롤
+################################################################################# */
+var stBodyScroll = (function(){
+	return {
+		lock: function(){
+			$('body').addClass('scrlock');
+			$('.header-wrap').attr('aria-hidden', true);
+			$('.content-frame').attr('aria-hidden', true);
+		},
+		unlock: function(){
+			$('body').removeClass('scrlock');
+			$('.header-wrap').attr('aria-hidden', false);
+			$('.content-frame').attr('aria-hidden', false);
+		}
+	}
+})();
 
 
 
@@ -521,6 +537,13 @@ $(document).on('change', '[data-func="viewSize"] input', function () {
     Dialog
 ################################################################################# */
 /* 함수 */
+if ($('#tempPop01').hasClass('active')) {
+  console.log('팝업이 열려 있음');
+} else {
+  console.log('팝업이 닫혀 있음');
+}
+
+
 var stModal = (function () {
     // panning 이동거리 확인용
     var tsY,
@@ -529,48 +552,6 @@ var stModal = (function () {
     return {
         common: {
 
-        },
-        alert: {
-            open: function (_target) {
-                if ($(_target).hasClass('active') === true) return;
-
-                if ($(_target).attr('data-animation') == 'off') {
-                    $(_target).addClass('active');
-                } else {
-                    $(_target).addClass('active');
-                    setTimeout(function () {
-                        $(_target).addClass('ani');
-                    });
-                }
-
-                // 바디스크롤 제어
-                stBodyScroll.lock();
-
-                // 접근성
-                $(_target).find('[data-wai-focus="start"]').attr('tabindex', -1).focus();
-                // $('.layout').attr('aria-hidden', true);
-            },
-            close: function (_target) {
-                var $thisModal = $(_target).closest('.sl-modal');
-
-                if ($thisModal.hasClass('modal-alert')) {
-                    /* animation option */
-                    // default
-                    if ($thisModal.attr('data-animation') == 'off') {
-                        $thisModal.removeClass('active');
-                        // 바디스크롤 제어
-                        if ($('body').find('.sl-modal.active').length == 0) stBodyScroll.unlock();
-                    } else {
-                        // animation
-                        $thisModal.removeClass('ani');
-                        setTimeout(function () {
-                            $thisModal.removeClass('active');
-                            // 바디스크롤 제어
-                            if ($('body').find('.sl-modal.active').length == 0) stBodyScroll.unlock();
-                        }, 300); //.modal-layer의 transition-duration 만큼 값 넣어서 사용
-                    }
-                }
-            }
         },
         popup: {
             open: function (_target) {
@@ -588,8 +569,9 @@ var stModal = (function () {
                 stBodyScroll.lock();
 
                 // 접근성
-                $(_target).find('[data-wai-focus="start"]').attr('tabindex', -1).focus();
-                // $('.layout').attr('aria-hidden', true);
+                setTimeout(function () {
+                    $(_target).find('[data-wai-focus="start"]').focus();
+                }, 50);
 
 
             },
@@ -627,7 +609,7 @@ var stModal = (function () {
                     $thisModal.addClass('active');
                     setTimeout(function () {
                         $thisModal.addClass('ani');
-                    });
+                    }, 30);
                 }
 
                 // 바디스크롤 제어
@@ -711,83 +693,6 @@ var stModal = (function () {
                 }
             }
         },
-        bottom: {
-            open: function (_target) {
-                var $thisModal = $(_target).closest('.sl-modal'),
-                    $modalLayer = $thisModal.find('.modal-layer');
-
-                if ($(_target).hasClass('active')) return;
-                if ($(_target).attr('data-animation') == 'off') {
-                    $(_target).addClass('active');
-                    $modalLayer.css('bottom', -stModal.bottom.modalHeight(_target));
-                    setTimeout(function () {
-                        $modalLayer.css('bottom', 0);
-                    });
-                } else {
-                    $(_target).addClass('active');
-                    $modalLayer.css('bottom', -stModal.bottom.modalHeight(_target));
-                    setTimeout(function () {
-                        $modalLayer.css('bottom', 0);
-                        $(_target).addClass('ani');
-                    });
-                }
-
-                // 바디스크롤 제어
-                stBodyScroll.lock();
-
-                // 접근성
-                $(_target).find('[data-wai-focus="start"]').attr('tabindex', -1).focus();
-                // $('.layout').attr('aria-hidden', true);
-            },
-            close: function (_target) {
-                var $thisModal = $(_target).closest('.sl-modal'),
-                    $modalLayer = $thisModal.find('.modal-layer');
-
-                if ($thisModal.hasClass('modal-bottom')) {
-                    /* animation option */
-                    // default
-                    if ($thisModal.attr('data-animation') == 'off') {
-                        $modalLayer.css('bottom', -stModal.bottom.modalHeight(_target));
-                        $thisModal.removeClass('active on');
-                        // 바디스크롤 제어
-                        if ($('body').find('.sl-modal.active').length == 0) stBodyScroll.unlock();
-                    } else {
-                        // animation
-                        $thisModal.removeClass('ani');
-                        $modalLayer.css('bottom', -stModal.bottom.modalHeight(_target));
-                        setTimeout(function () {
-                            $thisModal.removeClass('active on');
-                            // 바디스크롤 제어
-                            if ($('body').find('.sl-modal.active').length == 0) stBodyScroll.unlock();
-                        }, 300); //.modal-layer의 transition-duration 만큼 값 넣어서 사용
-                    }
-                }
-            },
-            panningStart: function (_event) {
-                tsY = _event.originalEvent.changedTouches[0].screenY;
-            },
-            panningEnd: function (_event) {
-                teY = _event.originalEvent.changedTouches[0].screenY;
-                var movement = tsY - teY;
-                if (movement > 50) {
-                    $('body').find('.sl-modal.ty-panning').addClass('on');
-                } else if (movement < 0) {
-                    $('body').find('.sl-modal.ty-panning').removeClass('on');
-                }
-            },
-            modalHeight: function (_target) {
-                /**
-                 *  커스텀 셀렉트를 사용 할 경우 애니메이션을 transform으로 조절하면
-                    modal-layer에 있는 overflow: hidden; 으로 인해서
-                    모달 바깥 커스텀 셀렉트 영역이 안보이는 현상이 있음.
-                    그러므로 modla-bottom을 transition으로 이용해 조절하기 위해 필요한 함수
-                 */
-                var $thisModal = $(_target).closest('.sl-modal');
-                var modalH = $thisModal.find('.modal-layer').outerHeight();
-
-                return modalH;
-            }
-        },
 
     }
 })();
@@ -801,3 +706,69 @@ $(document).on('touchstart', '.se-btn.btn-modal-panning', function (_event) {
 $(document).on('touchend', '.se-btn.btn-modal-panning', function (_event) {
     stModal.bottom.panningEnd(_event);
 });
+
+
+/* #################################################################################
+    swiper
+################################################################################# */
+/* 메인화면 */
+var offeringSwipe;
+
+function offeringSwiper() {
+    offeringSwipe = new Swiper(".offering-swiper", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        a11y: {
+            enabled: true,
+            prevSlideMessage: '이전 슬라이드',
+            nextSlideMessage: '다음 슬라이드',
+        },
+        navigation: {
+            prevEl: ".offering-swiper-area .swiper-button-prev",
+            nextEl: ".offering-swiper-area .swiper-button-next",
+        },
+        pagination: {
+            el: ".offering-swiper-area .swiper-pagination",
+            clickable: true,
+        },
+        on: {
+            init: function () {
+                updateAriaHidden(this);
+                updatePaginationInfo(this);
+            },
+            slideChange: function () {
+                updateAriaHidden(this);
+                updatePaginationInfo(this);
+            },
+            slideChangeTransitionEnd: function () {
+                updateAriaHidden(this);
+                updatePaginationInfo(this);
+            },
+            paginationUpdate: function () {
+                updatePaginationInfo(this);
+            }
+        }
+    });
+
+    // 활성 슬라이드 제외 aria-hidden 처리
+    function updateAriaHidden(swiper) {
+        var slides = swiper.slides;
+
+        // 모든 슬라이드 aria-hidden 초기화
+        $(slides).attr('aria-hidden', 'true');
+
+        // 현재 활성 슬라이드만 aria-hidden="false"
+        $(slides).each(function () {
+            if ($(this).hasClass('swiper-slide-active')) {
+                $(this).attr('aria-hidden', 'false');
+            }
+        });
+    }
+
+    // pagination 업데이트
+    function updatePaginationInfo(swiper) {
+        var current = swiper.realIndex + 1;
+        var total = swiper.slides.length;
+        $('.swiper-pagination').attr('aria-label', `총 ${total}개 슬라이드 중 ${current}번째 슬라이드`);
+    }
+}

@@ -207,20 +207,47 @@ h1 {
 a {
 	display: inline-block;
 }
+/* sl-modal */
+.sl-modal {
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+}
 
+/* 활성화 */
+.sl-modal.active {
+	display: flex;
+}
+
+/* animation */
+.sl-modal[data-animation=off] {
+	transition: none;
+}
+.sl-modal[data-animation=off] .modal-layer {
+	transition: none;
+}
+
+.sl-modal.active[data-animation=off] {
+	opacity: 1;
+}
+.sl-modal.active[data-animation=off] .modal-layer {
+	opacity: 1;
+}
 
 /* modal-popup */
 .sl-modal.modal-popup {
-  overflow: auto;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  z-index: 2000;
-  position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-  padding: 20px;
+	overflow: auto;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	padding: 20px;
+	z-index: 2000;
 }
 .sl-modal.modal-popup .modal-layer {
   position: relative;
@@ -232,7 +259,7 @@ a {
   box-sizing: border-box;
   border-radius: 24px;
   border: 1px solid var(--color-cg02);
-  background: var(--color-basic02);
+  background: #fff;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.06);
 }
 .sl-modal.modal-popup .modal-layer .modal-header {
@@ -357,6 +384,133 @@ a {
 }
 
 
+/* modal-full */
+.sl-modal.modal-full {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	padding: 0;
+	box-sizing: border-box;
+	background: green;   /* 배경색 없음 */
+	backdrop-filter: none;     /* 블러 효과 제거 */
+	-webkit-backdrop-filter: none; /* 사파리 대응 */
+	z-index: 9999;
+}
+.sl-modal.modal-full .modal-layer {
+	display: flex;
+	flex-direction: column;
+	width: 360px;
+	height: 800px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 0;
+	box-sizing: border-box;
+	background-color: var(--color-basic02);
+}
+.sl-modal.modal-full .modal-layer .modal-header {
+	flex: none;
+	display: flex;
+	align-items: center;
+	height: 64px;
+	padding: 0 50px 0 16px;
+	box-sizing: border-box;
+}
+.sl-modal.modal-full .modal-layer .modal-header.ty-layout {
+	position: relative;
+	padding: 0 16px;
+	justify-content: space-between;
+}
+.sl-modal.modal-full .modal-layer .modal-header.ty-layout .left-area {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.sl-modal.modal-full .modal-layer .modal-header.ty-layout .right-area {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.sl-modal.modal-full .modal-layer .modal-header.ty-layout .modal-title {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.sl-modal.modal-full .modal-layer .modal-title {
+	display: inline-block;
+	color: var(--color-basic01);
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 20px;
+}
+.sl-modal.modal-full .modal-layer .modal-container {
+	overflow: auto;
+	overflow: overlay;
+	flex: 1;
+}
+.sl-modal.modal-full .modal-layer .modal-container .modal-inner {
+	padding: 16px;
+	box-sizing: border-box;
+	font-size: 14px;
+	text-align: left;
+}
+.sl-modal.modal-full .modal-layer .modal-container .modal-inner .full-bleed {
+	margin-left: -16px;
+	margin-right: -16px;
+}
+.sl-modal.modal-full .modal-layer .modal-footer {
+	margin-top: auto;
+}
+.sl-modal.modal-full .modal-layer .modal-footer .btn-wrap {
+	display: flex;
+	gap: 10px;
+	padding: 12px 16px;
+	box-sizing: border-box;
+}
+.sl-modal.modal-full .modal-layer .modal-footer .btn-wrap .se-btn.btn-main:nth-last-child(2) {
+	flex: none;
+	width: 27%;
+	min-width: 104px;
+}
+.sl-modal.modal-full .modal-layer .modal-footer .btn-wrap.ty-stack {
+	flex-direction: column;
+	gap: 10px;
+}
+.sl-modal.modal-full .modal-layer .modal-footer .btn-wrap.ty-stack .se-btn.btn-main:nth-last-child(2) {
+	width: 100%;
+}
+.sl-modal.modal-full .modal-layer .modal-control {
+	display: flex;
+	position: absolute;
+	top: 16px;
+	right: 16px;
+}
+.sl-modal.modal-full .modal-layer .btn-dialog-close {
+	width: 32px;
+	height: 32px;
+	background: url("../../img/mgp/component/btn_dialog_close.svg") no-repeat center;
+}
 
 
+/* modal-full - animation */
+.sl-modal.modal-full {
+	opacity: 1;
+	transition: opacity 0.3s ease 0s;
+}
+.sl-modal.modal-full .modal-layer {
+	transform: translateX(50px);
+	transition: opacity 0.3s ease, transform 0.5s ease 0s;
+}
+.sl-modal.modal-full[data-animation=off] .modal-layer {
+	transform: translateX(0);
+}
 
+.sl-modal.modal-full.ani {
+	opacity: 1;
+}
+.sl-modal.modal-full.ani .modal-layer {
+	transform: translateX(0);
+	transition: opacity 0.3s ease, transform 0.5s ease 0s;
+}
