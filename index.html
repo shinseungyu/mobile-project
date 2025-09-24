@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>안녕하세요</title>
     <link rel="shortcut icon" href="./z_eilab/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./z_eilab/favicon.ico">
 
@@ -14,7 +14,7 @@
 
     <!-- Reset / 기본 스타일 먼저 -->
     <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/style.css?v=123">
+    <link rel="stylesheet" href="./css/style.css">
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -29,21 +29,21 @@
 <body>
 
     <!-- 왼쪽 바디 -->
-    <div class="logo_project">
+    <!-- <div class="logo_project">
         <div class="logo">
             <img src="z_eilab/prototype/logo_black.png" alt="" title="" style="width: 150px;">
         </div>
-        <div class="big_title">
-            <!-- BNK
+        <div class="big_title"> -->
+    <!-- BNK
 			<br> -->
-            <span style="font-weight: 100;">블록체인 기반</span>
+    <!-- <span style="font-weight: 100;">블록체인 기반</span>
             <br>
             <b>
                 통합 시민플랫폼 구축
             </b>
-        </div>
-        <!-- <div class="mid_title">GUI Proposal</div> -->
-    </div>
+        </div> -->
+    <!-- <div class="mid_title">GUI Proposal</div> -->
+    <!-- </div> -->
 
     <div class="logo_wrap">
         <img class="logo_navy" src="z_eilab/prototype/logo_eilab_navy.png" alt="" title="">
@@ -62,146 +62,119 @@
                 </div>
             </div>
             <div class="mobile">
+                <!-- 1.data-wai-focus="start" 가진것에 포커스 넣어줌 처음 포커스 필요하면 사용 -->
                 <div class="header">
-                    <h1>안녕dd</h1>
-                    <div>
-                        <button type="button" class="se-btn btn-cont ty-line sz-s"
-                            onclick="stModal.popup.open('#tempPop01')">열기</button>
-                        <a href="./mobile-web/mgp/html/_guide/modal_full.html">니하오</a>
-                        <a href="./dsada.html">니하오</a>
-                        <button type="button" class="se-btn btn-cont ty-line sz-s"
-                            onclick="stModal.full.open('#tempFull01')">열기</button>
-                    </div>
+                    <h5 class="modal-title" data-wai-focus="start" tabindex="0">Hi there,Daria</h5>
                 </div>
-                <!-- Swiper Container -->
-                <div class="offering-swiper-area">
-                    <div class="offering-swiper swiper" role="list">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide" role="listitem">
-                                <a href="#">슬라이드 1</a>
+                <div class="content">
+                    <div class="container">
+                        <div class="top-content">
+                            <div class="top-wrap">
+                                <h1 class="headtxt">Let's Make Your Dream Real
+                                    <span class="top-img">
+                                        <img src="./img/indicator/topg1.jpg" alt="배경이미지 다리이미지">
+                                    </span>
+                                </h1>
                             </div>
-                            <div class="swiper-slide" role="listitem">
-                                <a href="#">슬라이드 2</a>
+                            <div class="bottom-wrap">
+                                <div class="bottom-img"><img src="./img/indicator/topg2.jpg" alt="배경이미지 도시이미지"></div>
+                                <div class="line"></div>
                             </div>
-                            <div class="swiper-slide" role="listitem">
-                                <a href="#">슬라이드 3</a>
+
+                            <div class="middle-wrap">
+                                <!-- input속성 label로 접근성 대응 -->
+                                <span class="icon-acnt-edit" aria-label="찾는 돋보기"><img
+                                        src="./img/indicator/btn_search.svg" alt=""></span>
+                                <label for="phone">휴대폰번호</label>
+                                <input type="text" id="phone" placeholder="Search">
+                                <!-- aria-label 사용 -->
+                            </div>
+
+                            <div class="sbottom-wrap">
+                                <!-- 1.버튼이 아닌 요소에 버튼 기능 적용 -->
+                                <div class="sb-button-wrap">
+                                    <!-- 키보드 접근성을 위해  탭인덱스 사용 -->
+                                    <span class="sbottom-fir-spa" role="button" tabindex="0">Date</span>
+                                    <!-- 히든 텍스트 사용 -->
+                                    <span class="icon-acnt-edit1" aria-label="찾는 돋보기">
+                                        <img src="./img/indicator/btn_datepicker.svg" alt="">
+                                    </span>
+                                </div>
+                                <button type="button" class="second-btn"><span>Check</span></button>
                             </div>
                         </div>
-                        <!-- Pagination -->
-                        <div class="swiper-pagination" aria-label="슬라이드 페이지"></div>
-                        <!-- Navigation -->
-                        <button class="swiper-button-prev" aria-label="이전 슬라이드"></button>
-                        <button class="swiper-button-next" aria-label="다음 슬라이드"></button>
+                        <!--  포커스 되면 안되는곳에 area-hidden사용  -->
+                        <div class="swiper-container swiper manual-swipe">
+                            <div class="swipe-top">
+                                <h1>Trending<br>Places</h1>
+                                <div class="arrow"></div>
+                            </div>
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="swiper-img">
+                                        <img src="./img/indicator/backg1.jpg" alt="뉴욕배경 이미지">
+                                    </div>
+                                    <div class="swiper-titl">
+                                        <h1>New York</h1>
+                                        <p>United States</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-img">
+                                        <img src="./img/indicator/backg2.jpg" alt="도쿄 배경 이미지">
+                                    </div>
+                                    <div class="swiper-titl">
+                                        <h1>Tokyo</h1>
+                                        <p>Japan</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-img">
+                                        <img src="./img/indicator/backg3.jpg" alt="시드니 배경 이미지">
+                                    </div>
+                                    <div class="swiper-titl">
+                                        <h1>Sydney</h1>
+                                        <p>Australia</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-img">
+                                        <img src="./img/indicator/backg4.jpg" alt="파리 배경 이미지">
+                                    </div>
+                                    <div class="swiper-titl">
+                                        <h1>Paris</h1>
+                                        <p>France</p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="swiper-nav">
+                            <div class="swiper-pagination-info htxt" aria-live="polite"></div>
+                            <div class="swiper-pagination" aria-live="polite"></div>
+                        </div>
                     </div>
                 </div>
-                <!-- 스와이퍼 콘테이너 끝 -->
             </div>
-
         </div>
     </div>
 
 
-    <div id="tempFull01" class="sl-modal modal-full"><!-- id: 퍼블확인용임시ID -->
-        <div class="modal-layer">
-            <div class="modal-header">
-                <h5 class="modal-title" data-wai-focus="start" tabindex="0">Title</h5><!-- 접근성 focus start -->
-            </div>
-            <div class="modal-container">
-                <div class="modal-inner">
-                    <!-- 여기부터 컨텐츠 -->
-                    <!-- s: 여기부터 컨텐츠 -->
-                    <div class="swiper-container swiper manual-swipe">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="swiper-titl">
-                                    <h2 class="ebh2 bolder">
-                                        간편하게<br>
-                                        <span class="color-01">쉬운모드</span>로 전환
-                                    </h2>
-                                    <p>필요할 때마다 켜고 꺼보세요!</p>
-                                </div>
-                                <div class="swiper-img">
-                                    <img src="../../../../resources/image/easymode/manual1.png" alt="쉬운모드 전환 버튼 강조">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="swiper-titl">
-                                    <h2 class="ebh2 bolder">
-                                        <span class="color-01">자주 쓰는 메뉴</span><br>
-                                        한눈에 확인
-                                    </h2>
-                                    <p>필요한 메뉴만 쏙 모았어요!</p>
-                                </div>
-                                <div class="swiper-img">
-                                    <img src="../../../../resources/image/easymode/manual2.png" alt="자주쓰는 메뉴 강조">
-                                    <!-- 250725 : 이미지 수정 | ssy -->
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="swiper-titl">
-                                    <h2 class="ebh2 bolder">
-                                        복잡함 없이<br>
-                                        <span class="color-01">3단계로 이체 완료</span>
-                                    </h2>
-                                    <p>과정도 결과도 한눈에 보여요!</p>
-                                </div>
-                                <div class="swiper-img">
-                                    <img src="../../../../resources/image/easymode/manual3.png" alt="이체 과정 강조">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="swiper-titl">
-                                    <h2 class="ebh2 bolder">
-                                        <span class="color-01">큰 글씨와 쉬운 단어로</span><br>
-                                        간단한 화면 구성
-                                    </h2>
-                                    <p>복잡한 표현 없이 바로 이해돼요!</p>
-                                </div>
-                                <div class="swiper-img">
-                                    <img src="../../../../resources/image/easymode/manual4.png" alt="이체 완료 문구 강조">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="swiper-nav">
-                        <div class="swiper-pagination-info htxt" aria-live="polite"></div>
-                        <div class="swiper-pagination" aria-live="polite"></div>
-                    </div>
 
 
 
-                    <!-- //여기부터 컨텐츠 -->
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-wrap">
-                    <button type="button" class="se-btn btn-main ty-secondary"
-                        onclick="stModal.full.close($(this))">취소</button>
-                    <button type="button" class="se-btn btn-main ty-primary">확인</button>
-                </div>
-            </div>
-            <div class="modal-control">
-                <button type="button" class="se-btn btn-dialog-close" title="팝업닫기"
-                    onclick="stModal.full.close($(this))"></button><!-- onclick="stModal.full.close($(this))" : 모달닫기 -->
-            </div>
-        </div>
-    </div>
+
 
 
     <script>
+        // 스와이퍼 실행
         $(function () {
             easyManualSwiper();
         });
-
-        // stModal.popup.open('#tempPop01');// 열기
-        stModal.full.open('#tempFull01');// 열기
-
-
-
-
-
     </script>
 
 </body>
